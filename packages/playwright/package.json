@@ -1,0 +1,39 @@
+{
+  "name": "@autoflow/playwright",
+  "version": "1.0.0",
+  "description": "Give superpowers to your playwright tests with AI",
+  "author": "autoflow",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "keywords": [
+    "ai",
+    "playwright",
+    "test",
+    "testing",
+    "spec",
+    "autoflow"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepublishOnly": "mv README.md tmp.README.md && cp ../../README.md README.md",
+    "postpublish": "mv tmp.README.md README.md",
+    "release": "npm run build && npm publish --access public"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "@types/ws": "^8.5.7",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.21.0"
+  },
+  "dependencies": {
+    "uuidv7": "^0.6.3",
+    "ws": "^8.14.2"
+  }
+}
