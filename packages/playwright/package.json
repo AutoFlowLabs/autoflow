@@ -1,5 +1,5 @@
 {
-  "name": "@autoflow/playwright",
+  "name": "@autoflowlabs/playwright",
   "version": "1.0.0",
   "description": "Give superpowers to your playwright tests with AI",
   "author": "autoflow",
@@ -17,8 +17,8 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "prepublishOnly": "mv README.md tmp.README.md && cp ../../README.md README.md",
-    "postpublish": "mv tmp.README.md README.md",
+    "prepublishOnly": "move README.md tmp.README.md && copy ..\\..\\README.md README.md",
+    "postpublish": "move tmp.README.md README.md",
     "release": "npm run build && npm publish --access public"
   },
   "files": [
@@ -35,5 +35,16 @@
   "dependencies": {
     "uuidv7": "^0.6.3",
     "ws": "^8.14.2"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AutoFlowLabs/autoflow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AutoFlowLabs/autoflow/issues"
+  },
+  "homepage": "https://github.com/AutoFlowLabs/autoflow#readme"
 }
