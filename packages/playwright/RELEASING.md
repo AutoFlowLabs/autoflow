@@ -71,4 +71,4 @@ This document outlines the steps to be followed for releasing new versions of au
 
 ## Post-Release
 
-- Ensure the release is visible on GitHub and the package is updated on [npmjs.org](https://www.npmjs.com/package/@autoflow/playwright).
+- Ensure the release is visible on GitHub and the package is updated on [npmjs.org](https://www.npmjs.com/package/@autoflowlabs/playwright).

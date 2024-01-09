@@ -19,12 +19,12 @@ Add superpowers to your end-to-end tests with AutoFlow's open-source library. Le
 
 ## Setup
 
-### 1. Install the @autoflow/playwright dependency
+### 1. Install the @autoflowlabs/playwright dependency
 
-You can add the @autoflow/playwright package to your project by executing the following command in your terminal:
+You can add the @autoflowlabs/playwright package to your project by executing the following command in your terminal:
 
 ```sh
-$ npm i @autoflow/playwright -D
+$ npm i @autoflowlabs/playwright -D
 ```
 
 
@@ -49,7 +49,7 @@ Utilize and incorporate the `autoflow` function into your codebase by importing 
 
 ```ts
 import { test } from "@playwright/test";
-import { autoflow } from "@autoflow/playwright";
+import { autoflow } from "@autoflowlabs/playwright";
 
 test("autoflow example", async ({ page }) => {
   await page.goto("https://google.com/");
