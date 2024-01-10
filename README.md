@@ -1,14 +1,15 @@
 <div align="center">
   <picture>
     <source
-      srcset="https://github.com/AutoFlowLabs/autoflow/assets/40566635/241de554-a5b1-4c78-8d8f-c356681b9d41"
+      srcset="https://github.com/AutoFlowLabs/autoflow/assets/40566635/6cc95ead-0fea-49f9-b58d-cc5d4720c0fe"
       media="(prefers-color-scheme: dark)"
-      height="400" width="400"
+      alt="Autoflow Logo"
+      height="100" width="400"
     />
     <img
-      src="https://github.com/AutoFlowLabs/autoflow/assets/40566635/1a5de8c8-caa1-43d8-9b47-e62064d21a6d"
-      alt="autoflow Logo"
-      height="400" width="400"
+      src="https://github.com/AutoFlowLabs/autoflow/assets/40566635/5592e09e-eea8-4c93-9051-c47b1f55495e"
+      alt="Autoflow Logo"
+      height="100" width="400"
     />
   </picture>
 </div>
