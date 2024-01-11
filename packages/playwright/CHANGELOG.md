@@ -4,6 +4,14 @@ Documentation on notable changes to the package and release notes
 
 ---
 
+## [1.0.3](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.2) - 11-01-2024
+
+**What's New**
+
+- Updated test case
+- Added security layer to websocket protocol
+
+
 ## [1.0.2](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.2) - 09-01-2024
 
 **What's New**

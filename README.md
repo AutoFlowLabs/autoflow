@@ -157,8 +157,14 @@ With UI Mode
 $ npm run test-ui
 ```
 
-## Guide
+## Tips
 
+If the Chromium binary is not already installed, utilize the following command to install the necessary browsers.
+```sh
+$ npx playwright install
+```
+
+## Test guide
 To ensure your prompts function correctly, here are recommended best practices for Autoflow AI prompts
 
 - Construct prompts using complete English sentences without spelling or grammatical errors.
@@ -167,5 +173,4 @@ To ensure your prompts function correctly, here are recommended best practices f
 - Avoid merging multiple instructions within a single prompt. For instance, refrain from phrases like 'Type in the "Search bar" and then click on the "Menu"'. Instead, ensure that each prompt distinctly focuses on one action or query.
 - Create prompts that match your specific needs. Having a bit of uncertainty can be okay and sometimes even preferred. For instance, a prompt like `Find and click the "Learn More" button` remains effective even if there are multiple buttons with that label or if the page has undergone a complete redesign.
 
-<br>
-<br>
+

@@ -1,6 +1,6 @@
 {
   "name": "@autoflowlabs/playwright",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Give superpowers to your playwright tests with AI",
   "author": "autoflow",
   "license": "MIT",
