@@ -36,7 +36,7 @@ export const retrieveConfigValue = (key: string, fallback?: string): string => {
 
 // Configurable via environment variables or the config file
 export const TOKEN = retrieveConfigValue("TOKEN");
-export const WEBSOCKET_PROTOCOL = process.env["WEBSOCKET_PROTOCOL"] || "ws";
+export const WEBSOCKET_PROTOCOL = process.env["WEBSOCKET_PROTOCOL"] || "wss";
 export const WEBSOCKET_HOST = retrieveConfigValue(
   "WEBSOCKET_HOST",
   "api.autoflow.tools"
