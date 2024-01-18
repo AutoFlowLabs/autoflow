@@ -1,18 +1,20 @@
 <div align="center">
   <picture>
     <source
-      srcset="https://github.com/AutoFlowLabs/autoflow/assets/40566635/241de554-a5b1-4c78-8d8f-c356681b9d41"
+      srcset="https://github.com/AutoFlowLabs/autoflow/assets/40566635/6cc95ead-0fea-49f9-b58d-cc5d4720c0fe"
       media="(prefers-color-scheme: dark)"
-      height="400" width="400"
+      alt="Autoflow Logo"
+      height="100" width="400"
     />
     <img
-      src="https://github.com/AutoFlowLabs/autoflow/assets/40566635/1a5de8c8-caa1-43d8-9b47-e62064d21a6d"
-      alt="autoflow Logo"
-      height="400" width="400"
+      src="https://github.com/AutoFlowLabs/autoflow/assets/40566635/5592e09e-eea8-4c93-9051-c47b1f55495e"
+      alt="Autoflow Logo"
+      height="100" width="400"
     />
   </picture>
 </div>
 
+---
 # AutoFlow
 
 Add superpowers to your end-to-end tests with AutoFlow's open-source library. Learn more at https://autoflow.tools
@@ -45,7 +47,7 @@ Alternatively, you can store this token in a configuration file named `autoflow.
 
 ### 3. Get Set Flow!
 
-Utilize and incorporate the `autoflow` function into your codebase by importing it as shown:
+Utilize and incorporate the `autoflow()` function into your codebase by importing it as shown:
 
 ```ts
 import { test } from "@playwright/test";
@@ -65,39 +67,42 @@ test("autoflow example", async ({ page }) => {
 
 ## Usage
 
-To employ the `autoflow()` function, you require a basic text prompt and an argument that includes your`page`and `test` objects. Moreover, it's crucial to specify a `flow` type, which presently includes support for action and query. The `assert` flow type will soon become available as well.
+To employ the `autoflow()` function, you require a basic text prompt and an argument that includes your`page`and `test` objects. 
+
+Moreover, you can also specify a `flowType`, which presently includes support for `action`, `query` and `assert`.
 
 ```ts
-autoflow("<your prompt>", { page, test }, "<flow type>");
+autoflow("<your prompt>", { page, test }, "<flow type (optional)>");
 ```
 
-### Supported Browsers
+## Supported Browsers
 
-The functionality provided by this package is limited to performing `autoflow()` actions exclusively within Chromium browsers
+The functionality provided by this package is limited to performing `autoflow()` actions exclusively within Chromium browsers.
 
-### Additional Options
+## Type of Flows
 
-You have the option to include additional settings as a third argument
+There are 3 types of `flowType` supported. If a `flowType` is not provided, it is inferred from the statement.
 
+Example 
+- With `flowType`
 ```ts
-const options = {
-  debug: boolean, // If true, debugging information is returned from the autoflow() call.
-  parallelism: number, // The number of prompts that will be run in a chunk, applies when passing an array of prompts to autoflow(). Defaults to 10.
-  failImmediately: boolean, // If true and an array of prompts was provided, the function will throw immediately if any prompt throws. Defaults to false.
-};
-
-autoflow("<your prompt>", { page, test }, "<flow type>", options);
+await autoflow("Click the link", { page, test }, "action");
 ```
 
-### Flow Types (Supported Actions & Return Values)
+- With implicit `flowType`
+```ts
+await autoflow("Click the link", { page, test });
+```
 
-Various behaviors and return types exist depending on the specified or inferred `type` of action within the autoflow function
 
-**Action**: An action, such as a "click," represents a simulated user interaction with the webpage, like clicking a link. If necessary, it will scroll to accomplish the designated task but prioritizes elements visible in the current viewport. Successful actions will return undefined, while failures will trigger an error, as shown below:
+### 1. Action
+Return Type: `undefined`
+
+An action, such as a "click," represents a simulated user interaction with the webpage, like clicking a link. If necessary, it will scroll to accomplish the designated task but prioritizes elements visible in the current viewport. Successful actions will return undefined, while failures will trigger an error, as shown below:
 
 ```ts
 try {
-  await autoflow("Click the link", { page, test }, "action", options);
+  await autoflow("Click the link", { page, test }, "action");
 } catch (e) {
   console.error("Failed to click the link");
 }
@@ -105,30 +110,41 @@ try {
 
 Action prompts will result in one or multiple browser actions, including:
 
-Clicking elements
-Inputting text
-Pressing the 'Enter' key
-Navigating to a new URL
-However, certain browser actions like drag-and-drops and file uploads are not currently compatible or supported.
+- Clicking elements
+- Inputting text
+- Pressing the 'Enter' key
+- Navigating to a new URL
 
-**Query**: A query will provide requested data from the visible section of the page as a string, for instance:
+### 2. Query
+Return Type: `string`
+
+A query will provide requested data from the visible section of the page as a string, for instance:
 
 ```ts
 const linkText = await autoflow(
-  "Get the text of the first link",
-  { page, test },
-  "query"
-);
+  "Get the text of the first link", { page, test }, "query");
 console.log("The link text is", linkText);
 ```
 
-**Assert**: COMING SOON! Stay tuned for updates!
+### 3. Assert
+Return Type: `bool`
 
-## Examples
+Assert will evaluate whether something exists on the page and return a `true` or `false`
 
-Within this repository, there exists a demo allowing quick experimentation with the `autoflow()` function. To begin using it, follow these steps
+```ts
+const linkText = await autoflow(
+  "Is there a dog on this page?", { page, test }, "assert");
+console.log("The link text is", linkText);
+```
 
-1. Construct the local version of the autoflow/playwright package.
+
+> It must be noted that the assert is more inclined towards how something looks or whether something is present on the page or not VS query is about how something reads.
+
+## Don't have tests yet? Test out AutoFlow on examples
+
+Within this repository, there exists a demo allowing quick experimentation with the `autoflow()` function. To begin using it, follow these steps:
+
+1. Build the local version of the @autoflow/playwright package.
 
 ```sh
 cd packages/playwright
@@ -136,7 +152,7 @@ npm install
 npm run build
 ```
 
-2. Install the autoflow/playwright dependency within the examples directory.
+2. Install the @autoflow/playwright dependency within the examples directory.
 
 ```sh
 cd ../../examples/playwright
@@ -144,32 +160,35 @@ npm install
 ```
 
 3.  Make the `AUTOFLOW_TOKEN` environment variable or configuration value accessible (refer to the "Setup" section above).
+
 4.  Run the tests, with or without UI mode
 
-Without UI Mode
+### Without UI Mode
 ```sh
 $ npm run test
 ```
 
-With UI Mode
+
+### With UI Mode
 ```sh
 $ npm run test-ui
 ```
+This is an alias for `npx playwright test --ui`
 
 ## Tips
 
-If the Chromium binary is not already installed, utilize the following command to install the necessary browsers.
+- If the Chromium binary is not already installed, utilize the following command to install the necessary browsers.
 ```sh
 $ npx playwright install
 ```
 
-## Test guide
-To ensure your prompts function correctly, here are recommended best practices for Autoflow AI prompts
 
-- Construct prompts using complete English sentences without spelling or grammatical errors.
-- Enclose any text that should display precisely as stated within quotation marks. For instance, `Click on the "Login" button`
-- Avoid incorporating CSS/XPath selectors or any implementation-level specifics in your prompts.
-- Avoid merging multiple instructions within a single prompt. For instance, refrain from phrases like 'Type in the "Search bar" and then click on the "Menu"'. Instead, ensure that each prompt distinctly focuses on one action or query.
-- Create prompts that match your specific needs. Having a bit of uncertainty can be okay and sometimes even preferred. For instance, a prompt like `Find and click the "Learn More" button` remains effective even if there are multiple buttons with that label or if the page has undergone a complete redesign.
+- To ensure your prompts function correctly, here are recommended best practices for Autoflow AI prompts
+
+  - Construct prompts using complete English sentences. Minute grammatical errors are allowed but should be avoided
+  - Enclose any text that should display precisely as stated within quotation marks. For instance, `Click on the "Login" button`
+  - Avoid incorporating CSS/XPath selectors or any implementation-level specifics in your prompts.
+  - Create prompts that match your specific needs. Having a bit of uncertainty can be okay and sometimes even preferred. For instance, a prompt like `Find and click the "Learn More" button` remains effective even if there are multiple buttons with that label or if the page has undergone a complete redesign.
+  - A single prompt should have a single instruction. Avoid merging multiple instructions within a single prompt. For instance, refrain from phrases like 'Type in the "Search bar" and then click on the "Menu"'. Instead, ensure that each prompt distinctly focuses on one action or query.
 
 

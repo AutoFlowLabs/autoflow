@@ -4,7 +4,15 @@ Documentation on notable changes to the package and release notes
 
 ---
 
-## [1.0.3](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.2) - 11-01-2024
+## [1.0.4](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.4) - 18-01-2024
+
+**What's New**
+
+- Added assertion mode
+- Added flow type detection
+
+
+## [1.0.3](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.3) - 11-01-2024
 
 **What's New**
 
