@@ -25,8 +25,16 @@ Add superpowers to your end-to-end tests with AutoFlow's open-source library. Le
 
 You can add the @autoflowlabs/playwright package to your project by executing the following command in your terminal:
 
-```sh
-$ npm i @autoflowlabs/playwright -D
+Install Autoflow using [`yarn`](https://yarnpkg.com/en/package/@autoflowlabs/playwright):
+
+```bash
+yarn add --dev @autoflowlabs/playwright @playwright/test
+```
+
+Or [`npm`](https://www.npmjs.com/package/@autoflowlabs/playwright):
+
+```bash
+npm install -D @autoflowlabs/playwright @playwright/test
 ```
 
 
