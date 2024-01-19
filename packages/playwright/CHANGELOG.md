@@ -4,6 +4,13 @@ Documentation on notable changes to the package and release notes
 
 ---
 
+## [1.0.5](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.5) - 19-01-2024
+
+**What's New**
+
+- Minor bug fix
+
+
 ## [1.0.4](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.4) - 18-01-2024
 
 **What's New**
