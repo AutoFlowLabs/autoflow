@@ -199,4 +199,8 @@ $ npx playwright install
   - Create prompts that match your specific needs. Having a bit of uncertainty can be okay and sometimes even preferred. For instance, a prompt like `Find and click the "Learn More" button` remains effective even if there are multiple buttons with that label or if the page has undergone a complete redesign.
   - A single prompt should have a single instruction. Avoid merging multiple instructions within a single prompt. For instance, refrain from phrases like 'Type in the "Search bar" and then click on the "Menu"'. Instead, ensure that each prompt distinctly focuses on one action or query.
 
+## Testing Limitations in Free Tier
+In our commitment to offer a generous free tier to maximum users possible, we support sequential test runs only. For optimal performance, kindly run tests using the following commands:
 
+Headless tests: `npx playwright test --workers=1`
+Tests with a graphical user interface: `npx playwright test --ui --workers=1`
