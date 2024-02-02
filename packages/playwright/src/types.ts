@@ -14,6 +14,7 @@ export type FlowType = "action" | "query" | "assert";
 
 export type FlowOptions = {
   debug?: boolean;
+  cacheBypass?: boolean;
 };
 
 export type AutoFlowMessage = {
