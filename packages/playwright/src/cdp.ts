@@ -230,7 +230,7 @@ export const getElementPosition = async (
   args: { backendNodeId: number }
 ): Promise<ElementPosition> => {
   if (!args || !args.backendNodeId) {
-    throw new Error("Please provide a valid backend node ID.");
+    throw new Error("Couldn't find the element to perform the action. Please check and try again.");
   }
 
   const cdpSession = await createOrRetrieveCDPSession(page);
