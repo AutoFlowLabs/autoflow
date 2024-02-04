@@ -1,4 +1,4 @@
 {
-  "TOKEN": "<AUTOFLOW_TOKEN>",
+  "TOKEN": "<API_TOKEN>",
   "LOGS_ENABLED": true
 }
