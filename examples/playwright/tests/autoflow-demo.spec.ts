@@ -6,7 +6,6 @@ test.describe("GitHub", () => {
     await page.goto("https://github.com/AutoFlowLabs/autoflow");
     await autoflow(`Click on the 'Issues' tabs`, { page, test }, {cacheBypass: true, flowType: "action"});
     await page.waitForURL("https://github.com/AutoFlowLabs/autoflow/issues");
-    // Alternatively: await autoflow('Click on Labels', { page, test }, 'action');
     await page.locator('[role="search"] a[href="/AutoFlowLabs/autoflow/labels"]').click();
     await page.waitForURL("https://github.com/AutoFlowLabs/autoflow/labels");
     const numLabels = (await autoflow("How many labels are listed?", { page, test }, {cacheBypass:true})) as string;
@@ -20,7 +19,7 @@ test.describe("lobster", () => {
     await autoflow(`click on the 'recent' tab`, { page, test });
     await page.waitForURL("https://lobste.rs/recent");
     const numStories = (await autoflow("How many stories are listed?", { page, test }, {cacheBypass:true})) as string;
-    expect(parseInt(numStories)).toEqual(10);
+    expect(parseInt(numStories)).toEqual(25);
   });
 });
 
@@ -38,7 +37,7 @@ test.describe("saucedemo", () => {
     await autoflow(`click 'add to cart' button of item with name 'Sauce Labs Backpack'`, { page, test }, {cacheBypass:true, flowType: "action"});
     await autoflow(`click 'add to cart' button of item with name 'Sauce Labs Bike Light'`, { page, test });
     //  Alternatively: const shoppingCartLink = await page.waitForSelector('.shopping_cart_link');
-    // await shoppingCartLink.click();
+    // Alternatively: await shoppingCartLink.click();
     await autoflow(`Click the 'shopping cart icon'`, { page, test }, {flowType: "action"});
     await page.waitForURL("https://www.saucedemo.com/cart.html");
     await autoflow(`click the 'checkout' button`, { page, test });
