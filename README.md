@@ -24,6 +24,7 @@
   [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/TtDMA5CU)
 
 </div>
+
 ---
 # AutoFlow
 
@@ -228,3 +229,12 @@ In our commitment to offer a generous free tier to maximum users possible, we su
 
 Headless tests: `npx playwright test --workers=1`
 Tests with a graphical user interface: `npx playwright test --ui --workers=1`
+
+<br>
+
+<div align="center">
+<br>
+
+![GitHub stars](https://img.shields.io/badge/Made%20With%20%F0%9F%92%95-By%20Developers,%20For%20Everyone-FAAD1B)
+
+</div>

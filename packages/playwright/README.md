@@ -12,17 +12,16 @@
       height="100" width="400"
     />
   </picture>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+</div>
 
-  [![GitHub stars](https://img.shields.io/github/stars/AutoFlowLabs/autoflow.svg?style=social&label=Star&maxAge=2592000)](https://github.com/AutoFlowLabs/autoflow/stargazers/)
+<div align="center">
   
+  [![GitHub stars](https://img.shields.io/github/stars/AutoFlowLabs/autoflow.svg?style=social&label=Star&maxAge=2592000)](https://github.com/AutoFlowLabs/autoflow/stargazers/)
   [![GitHub forks](https://img.shields.io/github/forks/AutoFlowLabs/autoflow.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/AutoFlowLabs/autoflow/network/)
 
   [![Npm package total downloads](https://badgen.net/npm/dt/@autoflowlabs/playwright)](https://npmjs.com/package/@autoflowlabs/playwright)
-
+  
   [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/TtDMA5CU)
-
-  </div>
 
 </div>
 
@@ -230,3 +229,12 @@ In our commitment to offer a generous free tier to maximum users possible, we su
 
 Headless tests: `npx playwright test --workers=1`
 Tests with a graphical user interface: `npx playwright test --ui --workers=1`
+
+<br>
+
+<div align="center">
+<br>
+
+![GitHub stars](https://img.shields.io/badge/Made%20With%20%F0%9F%92%95-By%20Developers,%20For%20Everyone-FAAD1B)
+
+</div>
