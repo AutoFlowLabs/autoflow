@@ -12,20 +12,18 @@
       height="100" width="400"
     />
   </picture>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+</div>
 
-  [![GitHub stars](https://img.shields.io/github/stars/AutoFlowLabs/autoflow.svg?style=social&label=Star&maxAge=2592000)](https://github.com/AutoFlowLabs/autoflow/stargazers/)
+<div align="center">
   
+  [![GitHub stars](https://img.shields.io/github/stars/AutoFlowLabs/autoflow.svg?style=social&label=Star&maxAge=2592000)](https://github.com/AutoFlowLabs/autoflow/stargazers/)
   [![GitHub forks](https://img.shields.io/github/forks/AutoFlowLabs/autoflow.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/AutoFlowLabs/autoflow/network/)
 
   [![Npm package total downloads](https://badgen.net/npm/dt/@autoflowlabs/playwright)](https://npmjs.com/package/@autoflowlabs/playwright)
-
+  
   [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/TtDMA5CU)
 
-  </div>
-
 </div>
-
 ---
 # AutoFlow
 
