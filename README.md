@@ -12,6 +12,18 @@
       height="100" width="400"
     />
   </picture>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+
+  [![GitHub stars](https://img.shields.io/github/stars/AutoFlowLabs/autoflow.svg?style=social&label=Star&maxAge=2592000)](https://github.com/AutoFlowLabs/autoflow/stargazers/)
+  
+  [![GitHub forks](https://img.shields.io/github/forks/AutoFlowLabs/autoflow.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/AutoFlowLabs/autoflow/network/)
+
+  [![Npm package total downloads](https://badgen.net/npm/dt/@autoflowlabs/playwright)](https://npmjs.com/package/@autoflowlabs/playwright)
+
+  [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/TtDMA5CU)
+
+  </div>
+
 </div>
 
 ---
@@ -66,10 +78,10 @@ test("autoflow example", async ({ page }) => {
 
   // An object with page and test must be passed into every call
   const testArgs = { page, test };
-  const searchButtonText = await autoflow("Get the search button text", testArgs, "query");
+  const searchButtonText = await autoflow("Get the search button text", testArgs);
   await page.goto("https://google.com/");
-  await autoflow(`Type "${searchButtonText}" in the search box`, testArgs, "action");
-  await autoflow("Press enter", testArgs, "action");
+  await autoflow(`Type "${searchButtonText}" in the search box`, testArgs, {flowType: "action"});
+  await autoflow("Press enter", testArgs, {flowType: "action"});
 });
 ```
 
@@ -80,7 +92,15 @@ To employ the `autoflow()` function, you require a basic text prompt and an argu
 Moreover, you can also specify a `flowType`, which presently includes support for `action`, `query` and `assert`.
 
 ```ts
-autoflow("<your prompt>", { page, test }, "<flow type (optional)>");
+autoflow("<your prompt>", { page, test }, {flowType: "action"});
+```
+
+### Tip
+
+The test invocations are cached for convenience to the users. If you're getting undesired results and want to invalidate the cache, use the `cacheBypass` option.
+
+```ts
+autoflow("<your prompt>", { page, test }, {cacheBypass: true});
 ```
 
 ## Supported Browsers
@@ -94,7 +114,7 @@ There are 3 types of `flowType` supported. If a `flowType` is not provided, it i
 Example 
 - With `flowType`
 ```ts
-await autoflow("Click the link", { page, test }, "action");
+await autoflow("Click the link", { page, test }, {flowType: "action"});
 ```
 
 - With implicit `flowType`
@@ -104,13 +124,15 @@ await autoflow("Click the link", { page, test });
 
 
 ### 1. Action
+Version: [![BETA](https://img.shields.io/badge/BETA-darkgreen.svg)](https://shields.io/)
+
 Return Type: `undefined`
 
 An action, such as a "click," represents a simulated user interaction with the webpage, like clicking a link. If necessary, it will scroll to accomplish the designated task but prioritizes elements visible in the current viewport. Successful actions will return undefined, while failures will trigger an error, as shown below:
 
 ```ts
 try {
-  await autoflow("Click the link", { page, test }, "action");
+  await autoflow("Click the link", { page, test }, {flowType: "action"});
 } catch (e) {
   console.error("Failed to click the link");
 }
@@ -124,24 +146,28 @@ Action prompts will result in one or multiple browser actions, including:
 - Navigating to a new URL
 
 ### 2. Query
+Version: [![BETA](https://img.shields.io/badge/BETA-darkgreen.svg)](https://shields.io/)
+
 Return Type: `string`
 
 A query will provide requested data from the visible section of the page as a string, for instance:
 
 ```ts
 const linkText = await autoflow(
-  "Get the text of the first link", { page, test }, "query");
+  "Get the text of the first link", { page, test }, {flowType: "query"});
 console.log("The link text is", linkText);
 ```
 
 ### 3. Assert
+Version: [![ALPHA](https://img.shields.io/badge/Alpha-blue.svg)](https://shields.io/)
+
 Return Type: `bool`
 
 Assert will evaluate whether something exists on the page and return a `true` or `false`
 
 ```ts
 const linkText = await autoflow(
-  "Is there a dog on this page?", { page, test }, "assert");
+  "Is there a dog on this page?", { page, test }, {flowType: "assert"});
 console.log("The link text is", linkText);
 ```
 
