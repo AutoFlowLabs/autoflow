@@ -15,7 +15,6 @@ import type {
   TaskCompletionStatus,
   AutoFlowMessage,
   FlowOptions,
-  FlowType,
   ExecutionOptions
 } from "./types.js";
 
@@ -29,7 +28,6 @@ interface AutoflowOptions extends ExecutionOptions, FlowOptions {}
 export const autoflow = async (
   task: string | string[],
   configuration: { page: SimplifiedPage; test: SimplifiedTestType },
-  flowType?: FlowType,
   options?: AutoflowOptions
 ): Promise<any> => {
   if (!configuration || !configuration.page || !configuration.test) {
@@ -37,7 +35,7 @@ export const autoflow = async (
       "The necessary { page, test } argument is absent in the autoflow() function."
     );
   } else if (Array.isArray(task)) {
-    return runInParallel(task, configuration, flowType, options);
+    return runInParallel(task, configuration, options);
   }
 
   // Generate a unique ID that all messages in this exchange will use
@@ -69,7 +67,7 @@ export const autoflow = async (
         return;
       }
 
-      await initiateTask(page, task, taskId, flowType, options);
+      await initiateTask(page, task, taskId, options);
       const taskCompleteResponse = await executeTaskCommands(
         page,
         test,
@@ -145,7 +143,6 @@ const initiateTask = async (
   page: Page,
   task: string,
   taskId: string,
-  flowType?: FlowType,
   options?: FlowOptions
 ): Promise<void> => {
   const snapshot = await playwright.capturePageSnapshot(page);
@@ -155,7 +152,6 @@ const initiateTask = async (
     taskId,
     task,
     snapshot,
-    flowType,
     options,
   };
 
@@ -328,7 +324,6 @@ const executeCommand = async (
 const runInParallel: typeof autoflow = async (
   tasks,
   configuration,
-  flowType,
   options
 ) => {
   if (!Array.isArray(tasks) || tasks.length === 0) {
@@ -343,7 +338,7 @@ const runInParallel: typeof autoflow = async (
   for (let i = 0; i < tasksArray.length; i += parallelism) {
     const taskPromises = tasksArray
       .slice(i, i + parallelism)
-      .map((_) => autoflow(_, configuration, flowType, options));
+      .map((_) => autoflow(_, configuration, options));
 
     if (failImmediately) {
       const values = await Promise.all(taskPromises);

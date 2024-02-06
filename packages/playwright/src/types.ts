@@ -10,10 +10,12 @@ export type SimplifiedTestType = Pick<TestType<any, any>, "step">;
 // Step-specific types
 export type ScrollDirection = "up" | "down" | "bottom" | "top";
 
-export type FlowType = "action" | "query" | "assert";
+export type FlowType = "action" | "query" | "assert" | null ;
 
 export type FlowOptions = {
   debug?: boolean;
+  cacheBypass?: boolean;
+  flowType?: FlowType;  
 };
 
 export type AutoFlowMessage = {
@@ -28,7 +30,6 @@ export type AutoFlowMessage = {
     viewportWidth: number;
     viewportHeight: number;
   };
-  flowType?: FlowType,
   options?: FlowOptions;
 };
 
