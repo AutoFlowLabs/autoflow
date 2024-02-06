@@ -39,8 +39,7 @@ export const TOKEN = retrieveConfigValue("TOKEN");
 export const WEBSOCKET_PROTOCOL = process.env["WEBSOCKET_PROTOCOL"] || "wss";
 export const WEBSOCKET_HOST = retrieveConfigValue(
   "WEBSOCKET_HOST",
-   "api.autoflow.tools",
-  // "localhost:8000"
+  "api.autoflow.tools"
 );
 export const PACKAGE_NAME = retrieveConfigValue("PACKAGE_NAME", "autoflow");
 export const LOGS_ENABLED_STRING = retrieveConfigValue("LOGS_ENABLED", "true");

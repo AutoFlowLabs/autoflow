@@ -11,9 +11,5 @@
   },
   "bugs": {
     "url": "https://github.com/AutoFlowLabs/autoflow/issues"
-  },
-  "devDependencies": {
-    "@autoflowlabs/playwright": "^1.0.5",
-    "@playwright/test": "^1.41.2"
   }
 }
