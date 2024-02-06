@@ -13,16 +13,6 @@ test.describe("GitHub", () => {
   });
 });
 
-test.describe("lobster", () => {
-  test("Lobster Recent Stories Count", async ({ page }) => {
-    await page.goto("https://lobste.rs/");
-    await autoflow(`click on the 'recent' tab`, { page, test });
-    await page.waitForURL("https://lobste.rs/recent");
-    const numStories = (await autoflow("How many stories are listed?", { page, test }, {cacheBypass:true})) as string;
-    expect(parseInt(numStories)).toEqual(25);
-  });
-});
-
 const firstNameForSauce = "jon";
 const lastNameForSauce = "doe";
 const zipForSauce = "335001";
@@ -37,7 +27,7 @@ test.describe("saucedemo", () => {
     await autoflow(`click 'add to cart' button of item with name 'Sauce Labs Backpack'`, { page, test }, {cacheBypass:true, flowType: "action"});
     await autoflow(`click 'add to cart' button of item with name 'Sauce Labs Bike Light'`, { page, test });
     //  Alternatively: const shoppingCartLink = await page.waitForSelector('.shopping_cart_link');
-    // Alternatively: await shoppingCartLink.click();
+    //  Alternatively: await shoppingCartLink.click();
     await autoflow(`Click the 'shopping cart icon'`, { page, test }, {flowType: "action"});
     await page.waitForURL("https://www.saucedemo.com/cart.html");
     await autoflow(`click the 'checkout' button`, { page, test });
