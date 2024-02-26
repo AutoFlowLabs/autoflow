@@ -1,0 +1,22 @@
+{
+  "name": "autoflow-docs",
+  "version": "0.0.1",
+  "description": "Autoflow Docs",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "next": "^14.1.0",
+    "nextra": "^2.13.3",
+    "nextra-theme-docs": "^2.13.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
+  }
+}

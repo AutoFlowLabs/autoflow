@@ -1,0 +1,59 @@
+## Setup
+
+### Install 
+
+import { Tabs } from 'nextra/components'
+ 
+<Tabs items={['pnpm', 'npm', 'yarn']} defaultIndex="0">
+  <Tabs.Tab>
+    ```
+      pnpm install -D @autoflowlabs/playwright @playwright/test
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```
+      npm install -D @autoflowlabs/playwright @playwright/test
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```
+      yarn add --dev @autoflowlabs/playwright @playwright/test
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### Setting up the API Token
+
+  This library requires access to a specific environment variable that contains your AutoFlow token, which is essential for the playwright process. This token can be found in your account on https://autoflow.tools. You can expose this variable in various ways. One option is to set it as an environment variable, as demonstrated below:
+
+  ```sh
+  $ export AUTOFLOW_TOKEN="<your token here>"
+  ```
+
+  Alternatively, you can store this token in a configuration file named `autoflow.config.json` located in your project's root directory, structured like this:
+
+  ```json
+  {
+    "TOKEN": "<your token here>"
+  }
+  ```
+
+### Get Set Flow!
+
+Utilize and incorporate the `autoflow()` function into your codebase by importing it as shown:
+
+```ts
+import { test } from "@playwright/test";
+import { autoflow } from "@autoflowlabs/playwright";
+
+test("autoflow example", async ({ page }) => {
+  await page.goto("https://google.com/");
+
+  // An object with page and test must be passed into every call
+  const testArgs = { page, test };
+  const searchButtonText = await autoflow("Get the search button text", testArgs);
+  await page.goto("https://google.com/");
+  await autoflow(`Type "${searchButtonText}" in the search box`, testArgs, {flowType: "action"});
+  await autoflow("Press enter", testArgs, {flowType: "action"});
+});
+```
