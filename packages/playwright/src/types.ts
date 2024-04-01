@@ -18,6 +18,16 @@ export type FlowOptions = {
   flowType?: FlowType;  
 };
 
+export type WebSocketMessage = {
+  api_key: string;
+  client: string;
+  path: string;
+  service: string;
+  method: string;
+  body: AutoFlowMessage
+}
+
+
 export type AutoFlowMessage = {
   type: "task-start";
   packageVersion?: string;
@@ -64,6 +74,15 @@ export type ClientCommandResponse = {
   index: number;
   result: any;
 };
+
+export type WebSocketClientCommandResponse = {
+  api_key: string;
+  client: string;
+  path: string;
+  service: string;
+  method: string;
+  body: ClientCommandResponse
+}
 
 export type ExecutionOptions = {
   // Specific to the package, sets the max number of steps we'll execute
