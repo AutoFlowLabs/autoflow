@@ -14,6 +14,17 @@
   </picture>
 </div>
 
+<div align="center">
+  
+  [![GitHub stars](https://img.shields.io/github/stars/AutoFlowLabs/autoflow.svg?style=social&label=Star&maxAge=2592000)](https://github.com/AutoFlowLabs/autoflow/stargazers/)
+  [![GitHub forks](https://img.shields.io/github/forks/AutoFlowLabs/autoflow.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/AutoFlowLabs/autoflow/network/)
+
+  [![Npm package total downloads](https://badgen.net/npm/dt/@autoflowlabs/playwright)](https://npmjs.com/package/@autoflowlabs/playwright)
+  
+  [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/TtDMA5CU)
+
+</div>
+
 ---
 # AutoFlow
 
@@ -66,10 +77,10 @@ test("autoflow example", async ({ page }) => {
 
   // An object with page and test must be passed into every call
   const testArgs = { page, test };
-  const searchButtonText = await autoflow("Get the search button text", testArgs, "query");
+  const searchButtonText = await autoflow("Get the search button text", testArgs);
   await page.goto("https://google.com/");
-  await autoflow(`Type "${searchButtonText}" in the search box`, testArgs, "action");
-  await autoflow("Press enter", testArgs, "action");
+  await autoflow(`Type "${searchButtonText}" in the search box`, testArgs, {flowType: "action"});
+  await autoflow("Press enter", testArgs, {flowType: "action"});
 });
 ```
 
@@ -80,7 +91,15 @@ To employ the `autoflow()` function, you require a basic text prompt and an argu
 Moreover, you can also specify a `flowType`, which presently includes support for `action`, `query` and `assert`.
 
 ```ts
-autoflow("<your prompt>", { page, test }, "<flow type (optional)>");
+autoflow("<your prompt>", { page, test }, {flowType: "action"});
+```
+
+### Tip
+
+The test invocations are cached for convenience to the users. If you're getting undesired results and want to invalidate the cache, use the `cacheBypass` option.
+
+```ts
+autoflow("<your prompt>", { page, test }, {cacheBypass: true});
 ```
 
 ## Supported Browsers
@@ -94,7 +113,7 @@ There are 3 types of `flowType` supported. If a `flowType` is not provided, it i
 Example 
 - With `flowType`
 ```ts
-await autoflow("Click the link", { page, test }, "action");
+await autoflow("Click the link", { page, test }, {flowType: "action"});
 ```
 
 - With implicit `flowType`
@@ -104,13 +123,15 @@ await autoflow("Click the link", { page, test });
 
 
 ### 1. Action
+Version: [![BETA](https://img.shields.io/badge/BETA-darkgreen.svg)](https://shields.io/)
+
 Return Type: `undefined`
 
 An action, such as a "click," represents a simulated user interaction with the webpage, like clicking a link. If necessary, it will scroll to accomplish the designated task but prioritizes elements visible in the current viewport. Successful actions will return undefined, while failures will trigger an error, as shown below:
 
 ```ts
 try {
-  await autoflow("Click the link", { page, test }, "action");
+  await autoflow("Click the link", { page, test }, {flowType: "action"});
 } catch (e) {
   console.error("Failed to click the link");
 }
@@ -124,24 +145,28 @@ Action prompts will result in one or multiple browser actions, including:
 - Navigating to a new URL
 
 ### 2. Query
+Version: [![BETA](https://img.shields.io/badge/BETA-darkgreen.svg)](https://shields.io/)
+
 Return Type: `string`
 
 A query will provide requested data from the visible section of the page as a string, for instance:
 
 ```ts
 const linkText = await autoflow(
-  "Get the text of the first link", { page, test }, "query");
+  "Get the text of the first link", { page, test }, {flowType: "query"});
 console.log("The link text is", linkText);
 ```
 
 ### 3. Assert
+Version: [![ALPHA](https://img.shields.io/badge/Alpha-blue.svg)](https://shields.io/)
+
 Return Type: `bool`
 
 Assert will evaluate whether something exists on the page and return a `true` or `false`
 
 ```ts
 const linkText = await autoflow(
-  "Is there a dog on this page?", { page, test }, "assert");
+  "Is there a dog on this page?", { page, test }, {flowType: "assert"});
 console.log("The link text is", linkText);
 ```
 
@@ -199,4 +224,17 @@ $ npx playwright install
   - Create prompts that match your specific needs. Having a bit of uncertainty can be okay and sometimes even preferred. For instance, a prompt like `Find and click the "Learn More" button` remains effective even if there are multiple buttons with that label or if the page has undergone a complete redesign.
   - A single prompt should have a single instruction. Avoid merging multiple instructions within a single prompt. For instance, refrain from phrases like 'Type in the "Search bar" and then click on the "Menu"'. Instead, ensure that each prompt distinctly focuses on one action or query.
 
+## Testing Limitations in Free Tier
+In our commitment to offer a generous free tier to maximum users possible, we support sequential test runs only. For optimal performance, kindly run tests using the following commands:
 
+Headless tests: `npx playwright test --workers=1`
+Tests with a graphical user interface: `npx playwright test --ui --workers=1`
+
+<br>
+
+<div align="center">
+<br>
+
+![GitHub stars](https://img.shields.io/badge/Made%20With%20%F0%9F%92%95-By%20Developers,%20For%20Everyone-FAAD1B)
+
+</div>

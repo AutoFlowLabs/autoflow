@@ -3,6 +3,13 @@
 Documentation on notable changes to the package and release notes
 
 ---
+## [1.0.6](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.6) - 06-02-2024
+
+**What's New**
+
+- Added Cache Bypassing
+- Updated Function Signature
+
 
 ## [1.0.5](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.5) - 19-01-2024
 
