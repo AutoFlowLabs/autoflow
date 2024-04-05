@@ -3,6 +3,14 @@
 Documentation on notable changes to the package and release notes
 
 ---
+
+## [1.0.7](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.6) - 05-04-2024
+
+**What's New**
+
+- Added support for parallel test run for all users!
+- Added support for bun websockets
+
 ## [1.0.6](https://www.npmjs.com/package/@autoflow/playwright/v/1.0.6) - 06-02-2024
 
 **What's New**

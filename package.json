@@ -1,6 +1,6 @@
 {
   "name": "autoflow-monorepo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Add AI to your playwright tests with AutoFlow",
   "author": "autoflow",
   "license": "MIT",

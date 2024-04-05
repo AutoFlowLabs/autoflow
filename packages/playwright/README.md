@@ -225,10 +225,12 @@ $ npx playwright install
   - A single prompt should have a single instruction. Avoid merging multiple instructions within a single prompt. For instance, refrain from phrases like 'Type in the "Search bar" and then click on the "Menu"'. Instead, ensure that each prompt distinctly focuses on one action or query.
 
 ## Testing Limitations in Free Tier
-In our commitment to offer a generous free tier to maximum users possible, we support sequential test runs only. For optimal performance, kindly run tests using the following commands:
+<s>In our commitment to offer a generous free tier to maximum users possible, we support sequential test runs only. For optimal performance, kindly run tests using the following commands:
 
 Headless tests: `npx playwright test --workers=1`
-Tests with a graphical user interface: `npx playwright test --ui --workers=1`
+Tests with a graphical user interface: `npx playwright test --ui --workers=1`</s>
+
+At AutoFlow, we're committed to delivering a top-tier experience to the community by leveraging cutting-edge technology. With this vision in mind, we've fine-tuned our systems and services to accommodate a high volume of parallel connections and testing, ensuring that everyone enjoys a seamless and efficient experience.
 
 <br>
 
