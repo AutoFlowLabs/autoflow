@@ -15,7 +15,9 @@ import type {
   TaskCompletionStatus,
   AutoFlowMessage,
   FlowOptions,
-  ExecutionOptions
+  ExecutionOptions,
+  WebSocketMessage,
+  WebSocketClientCommandResponse,
 } from "./types.js";
 
 interface AutoflowOptions extends ExecutionOptions, FlowOptions {}
@@ -139,13 +141,23 @@ export const constructErrorMessage = (options: ErrorMessageOptions): string => {
 /**
  * Sends a message over the websocket to begin an autoflow task.
  */
+
+
 const initiateTask = async (
   page: Page,
   task: string,
   taskId: string,
   options?: FlowOptions
 ): Promise<void> => {
+  const api_key = TOKEN;
+  const path = "/api/v1/automind/automind-task-processing";
+  const service = "autoflow-automind";
+  const method = "POST";
+  const client = "SDK";
+
   const snapshot = await playwright.capturePageSnapshot(page);
+
+
   const taskStartMessage: AutoFlowMessage = {
     type: "task-start",
     packageVersion: meta.getVersion(),
@@ -155,8 +167,18 @@ const initiateTask = async (
     options,
   };
 
-  await webSocket.sendMessageOverWebSocket(taskStartMessage);
+  const taskStartWebSocketMessage: WebSocketMessage = {
+    api_key,
+    client,
+    path,
+    service,
+    method,
+    body: taskStartMessage,
+  };
+
+  await webSocket.sendMessageOverWebSocket(taskStartWebSocketMessage);
 };
+
 
 /**
  * Sends a message over the websocket in response to an autoflow command completing.
@@ -166,6 +188,14 @@ const sendCommandResponse = async (
   taskId: string,
   result: any
 ): Promise<void> => {
+
+  const api_key = TOKEN;
+  const path = "/api/v1/automind/automind-task-processing";
+  const service = "autoflow-automind";
+  const method = "POST";
+  const client = "SDK";
+  
+
   const responseMessage: ClientCommandResponse = {
     type: "command-response",
     packageVersion: meta.getVersion(),
@@ -175,7 +205,16 @@ const sendCommandResponse = async (
       result === undefined || result === null ? "null" : JSON.stringify(result),
   };
 
-  await webSocket.sendMessageOverWebSocket(responseMessage);
+  const responseWebSocketMessage: WebSocketClientCommandResponse = {
+    api_key,
+    client,
+    path,
+    service,
+    method,
+    body: responseMessage,
+  };
+
+  await webSocket.sendMessageOverWebSocket(responseWebSocketMessage);
 };
 
 /**

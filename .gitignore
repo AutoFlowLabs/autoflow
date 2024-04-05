@@ -12,3 +12,5 @@ examples/playwright/node_modules
 examples/playwright/test-results
 examples/playwright/playwright-report
 examples/playwright/playwright/.cache
+
+node_modules

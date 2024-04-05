@@ -5,6 +5,8 @@ import type {
   ClientCommandResponse,
   TaskCompletionStatus,
   AutoFlowMessage,
+  WebSocketMessage,
+  WebSocketClientCommandResponse,
 } from "./types.js";
 
 let activeWebSocket: null | WebSocket = null;
@@ -27,6 +29,8 @@ export const establishWebSocketConnection = async (): Promise<WebSocket> => {
     if (!activeWebSocket) {
       activeWebSocket = new WebSocket(WEBSOCKET_URL);
     }
+
+    console.log("Establishing websocket connection to: ", WEBSOCKET_URL)
 
     const ws = activeWebSocket as WebSocket;
 
@@ -61,22 +65,28 @@ export const establishWebSocketConnection = async (): Promise<WebSocket> => {
 /**
  * Sends a message over the autoflow WebSocket
  */
+
+
 export const sendMessageOverWebSocket = async (
-  message: AutoFlowMessage | ClientCommandResponse
+  message: AutoFlowMessage | ClientCommandResponse | WebSocketMessage | WebSocketClientCommandResponse
 ): Promise<void> => {
+
+  
   const webSocket = await establishWebSocketConnection();
-  const serializedMessage = JSON.stringify(message);
+  const serializedMessage = JSON.stringify(message, null, 2);
+
   if (LOGS_ENABLED) {
     console.log(`> ws send:`, serializedMessage.slice(0, 250));
   }
   webSocket.send(serializedMessage);
-};
+}; 
 
 /**
  * Adds an event listener for message events emitted by the WebSocket. The
  * callback receives a parsed object from the message's `data` field. Returns
  * a functions that will remove the listener.
  */
+
 export const addWebSocketMessageListener = async (
   taskId: string,
   handler: (
